@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { nanoid } from 'nanoid';
-import Section from "./Section/Section";
-import PhonebookForm from "./PhonebookForm/PhonebookForm";
-
+import ContactForm from "./ContactForm/ContactForm ";
 import ContactList from "./ContactList/ContactList";
-// import newContacts from "./Contacts";
 import Filter from "./Filter/Filter";
 
 export class App extends Component {
@@ -17,12 +14,9 @@ export class App extends Component {
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
     ],
-    name: '',
-    number: '',
     filter: '',
   };
 
-  
   addContact = data => { 
     const newContact = {
       id: nanoid(),
@@ -48,26 +42,17 @@ export class App extends Component {
 
   render() {
 
-    const { contacts, name, number, filter } = this.state;
+    const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
      
-    return (<>
-      <Section title="Phonebook">
-        <PhonebookForm
-          // contacts={contacts}
-          name={name}
-          number={number}
-          onSubmitData={this.addContact} />
-      </Section>
-
-      <Filter value={filter} onChange={this.changeFilter}/>
-
-       <Section title="Contacts">
-        {/* <ContactList contacts={contacts} /> */}
-         <ContactList contacts={visibleContacts} />
-        </Section>
+    return (<>   
+        <h1>Phonebook</h1>
+        <ContactForm onSubmitData={this.addContact} />
+      
+        <h2>Contacts</h2>
+        <Filter value={filter} onChange={this.changeFilter}/> 
+        <ContactList contacts={visibleContacts} />     
     </>);
-
   }
 }
   

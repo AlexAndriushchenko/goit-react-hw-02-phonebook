@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
-import css from './PhonebookForm.module.css';
+import css from './ContactForm.module.css';
 
-class PhonebookForm extends Component {
+class ContactForm extends Component {
   state = {
-    name: this.props.name,
-    number: this.props.number,
+    name: '',
+    number: '',
   };
 
   nameInputId = nanoid();
@@ -31,7 +31,7 @@ class PhonebookForm extends Component {
 
   render() {
     return (
-      <div className={css.phonebookform}>
+      <div className={css.phonebook_form}>
         <form type="submit" onSubmit={this.handleSubmit}>
           <label htmlFor={this.nameInputId} className={css.phonebook_label}>
             Name
@@ -68,8 +68,8 @@ class PhonebookForm extends Component {
   }
 }
 
-PhonebookForm.propTypes = {
+ContactForm.propTypes = {
   onSubmitData: PropTypes.func.isRequired,
 };
 
-export default PhonebookForm;
+export default ContactForm;
