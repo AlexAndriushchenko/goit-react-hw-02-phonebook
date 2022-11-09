@@ -16,9 +16,9 @@ class Filter extends Component {
   }
 }
 
-// Section.propTypes = {
-//   title: PropTypes.string,
-//   children: PropTypes.object,
-// };
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Filter;
