@@ -24,10 +24,24 @@ export class App extends Component {
       number: data.number,
     };
 
+    for (const contact of this.state.contacts)
+    {
+      if (contact.name === data.name) {
+        window.alert(`${contact.name} is already in contacts.`);
+        return;
+      }   
+    }
+    
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
     }));
   };
+
+  deleteContact = contactId => {
+      this.setState(prevState => ({
+        contacts: prevState.contacts.filter(contact => contact.id !== contactId),  
+      }));
+    };
  
   changeFilter = evt => {
     this.setState({filter: evt.currentTarget.value})
@@ -51,7 +65,7 @@ export class App extends Component {
       
         <h2>Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter}/> 
-        <ContactList contacts={visibleContacts} />     
+      <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact} />     
     </>);
   }
 }
